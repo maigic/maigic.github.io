@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,20 +7,16 @@
 <title>百度地图API自定义地图</title>
 <!--引用百度地图API-->
 <style type="text/css">
-    html,body{margin:0;padding:0;overflow: hidden;}
+    html,body{margin:0;padding:0;}
     .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
     .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
-	  .anchorBL {
-    display: none;
-}
 </style>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=87zFsTCq5pmrSEHaLgURT0l2TjFzZhDH"></script>
-
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
 </head>
 
 <body>
   <!--百度地图容器-->
-  <div style="width:100%;height:300px;border:#ccc solid 1px;" id="dituContent"></div>
+  <div style="width:697px;height:500px;border:#ccc solid 1px;" id="dituContent"></div>
 </body>
 <script type="text/javascript">
     //创建和初始化地图函数：
@@ -35,8 +30,8 @@
     //创建地图函数：
     function createMap(){
         var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
-        var point = new BMap.Point(113.018351,28.116866);//定义一个中心点坐标
-        map.centerAndZoom(point,16);//设定地图的中心点和坐标并将地图显示在地图容器中
+        var point = new BMap.Point(113.019537,28.11728);//定义一个中心点坐标
+        map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
         window.map = map;//将map变量存储在全局
     }
     
@@ -50,10 +45,19 @@
     
     //地图控件添加函数：
     function addMapControl(){
-                        }
+        //向地图中添加缩放控件
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_SMALL});
+	map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+	var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_TOP_RIGHT,isOpen:0});
+	map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+	var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+	map.addControl(ctrl_sca);
+    }
     
     //标注点数组
-    var markerArr = [{title:"韩国泡泡秀儿童体验馆",content:"地址：长沙市雨花区湘府中路德思勤城市广场1层<br/>电话：18975109971",point:"113.018351,28.116866",isOpen:1,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+    var markerArr = [{title:"韩国泡泡秀儿童体验馆",content:"地址：长沙市雨花区湘府中路德思勤城市广场4楼<br/>电话：18975109971",point:"113.018701|28.11693",isOpen:0,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
 		 ];
     //创建marker
     function addMarker(){
