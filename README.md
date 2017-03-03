@@ -1,2 +1,1 @@
-美吉柯
-# magic.github.io
+# maigic.github.io
